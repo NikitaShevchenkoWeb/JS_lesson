@@ -2,7 +2,7 @@
 
 let money = 50000,
     income = "Фриланс",
-    addExpenses = "Кофе, Интернет, Такси",
+    addExpenses = "Кофе, Обед, Интернет, Такси",
     deposit = false,
     mission = 300000,
     period = 12;
@@ -18,6 +18,7 @@ console.log("Цель заработать " + mission + " рублей");
 
 
 console.log(addExpenses.toLowerCase());
+console.log(addExpenses.split(', '));
 
 let budgetDay = money / 30;
 console.log(budgetDay);
