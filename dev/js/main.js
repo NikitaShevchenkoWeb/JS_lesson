@@ -1,23 +1,31 @@
-"use strict";
+let btnCalculate = document.getElementById('start');
 
-let money = 50000,
-    income = "Фриланс",
-    addExpenses = "Кофе, Интернет, Такси",
-    deposit = false,
-    mission = 300000,
-    period = 12;
+let plusOne = document.getElementsByTagName('button')[0];
+let plusTwo = document.getElementsByTagName('button')[1];
 
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+let checkBox = document.querySelector('#deposit-check');
 
-console.log(addExpenses.length);
-
-console.log("Период равен " + period + " месяцев");
-console.log("Цель заработать " + mission + " рублей");
+let incomeItemOne = document.querySelectorAll('.additional_income-item')[0];
+let incomeItemTwo = document.querySelectorAll('.additional_income-item')[1];
 
 
-console.log(addExpenses.toLowerCase());
+let budgetMonth = document.querySelectorAll('.result-total')[0],
+    budgetDay = document.querySelectorAll('.result-total')[1],
+    expensesMonth = document.querySelectorAll('.result-total')[2],
+    additionalIncome = document.querySelectorAll('.result-total')[3],
+    additionalExpenses = document.querySelectorAll('.result-total')[4],
+    incomePeriod = document.querySelectorAll('.result-total')[5],
+    targetMonth = document.querySelectorAll('.result-total')[6];
 
-let budgetDay = money / 30;
-console.log(budgetDay);
+
+let monthIncome = document.querySelector('.salary-amount'),
+    addIncomeTitle = document.querySelector('.income-title'),
+    addIncomeAmount = document.querySelector('.income-amount'),
+    addExpensesTitle = document.querySelector('.expenses-title'),
+    addExpensesAmount = document.querySelector('.expenses-amount'),
+    possibleExpenses = document.querySelector('.additional_expenses-item'),
+    target = document.querySelector('.target-amount'),
+    range = document.querySelector('.period-select');
+
+
+console.log(range);

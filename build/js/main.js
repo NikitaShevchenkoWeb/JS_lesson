@@ -1,19 +1,24 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var money = 50000,
-    income = "Фриланс",
-    addExpenses = "Кофе, Интернет, Такси",
-    deposit = false,
-    mission = 300000,
-    period = 12;
-console.log(_typeof(money));
-console.log(_typeof(income));
-console.log(_typeof(deposit));
-console.log(addExpenses.length);
-console.log("Период равен " + period + " месяцев");
-console.log("Цель заработать " + mission + " рублей");
-console.log(addExpenses.toLowerCase());
-var budgetDay = money / 30;
-console.log(budgetDay);
+var btnCalculate = document.getElementById('start');
+var plusOne = document.getElementsByTagName('button')[0];
+var plusTwo = document.getElementsByTagName('button')[1];
+var checkBox = document.querySelector('#deposit-check');
+var incomeItemOne = document.querySelectorAll('.additional_income-item')[0];
+var incomeItemTwo = document.querySelectorAll('.additional_income-item')[1];
+var budgetMonth = document.querySelectorAll('.result-total')[0],
+    budgetDay = document.querySelectorAll('.result-total')[1],
+    expensesMonth = document.querySelectorAll('.result-total')[2],
+    additionalIncome = document.querySelectorAll('.result-total')[3],
+    additionalExpenses = document.querySelectorAll('.result-total')[4],
+    incomePeriod = document.querySelectorAll('.result-total')[5],
+    targetMonth = document.querySelectorAll('.result-total')[6];
+var monthIncome = document.querySelector('.salary-amount'),
+    addIncomeTitle = document.querySelector('.income-title'),
+    addIncomeAmount = document.querySelector('.income-amount'),
+    addExpensesTitle = document.querySelector('.expenses-title'),
+    addExpensesAmount = document.querySelector('.expenses-amount'),
+    possibleExpenses = document.querySelector('.additional_expenses-item'),
+    target = document.querySelector('.target-amount'),
+    range = document.querySelector('.period-select');
+console.log(range);
