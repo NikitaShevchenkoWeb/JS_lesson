@@ -1,23 +1,34 @@
-"use strict";
+let books = document.querySelectorAll('.books'),
+    book = document.querySelectorAll('.book');
 
-let money = 50000,
-    income = "Фриланс",
-    addExpenses = "Кофе, Интернет, Такси",
-    deposit = false,
-    mission = 300000,
-    period = 12;
-
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
-
-console.log(addExpenses.length);
-
-console.log("Период равен " + period + " месяцев");
-console.log("Цель заработать " + mission + " рублей");
+books[0].insertBefore(book[2], book[6]);
+books[0].insertBefore(book[3], book[5]);
+books[0].insertBefore(book[1], book[0]);
 
 
-console.log(addExpenses.toLowerCase());
+let bgIndex = document.querySelector('body');
+bgIndex.setAttribute('style', 'background-image: url(image/you-dont-know-js.jpg)');
 
-let budgetDay = money / 30;
-console.log(budgetDay);
+
+let bookTitle = document.querySelectorAll('h2 a');
+bookTitle[2].textContent = '"Книга 3. this и Прототипы Объектов"';
+
+
+let adv = document.querySelector('.adv');
+adv.remove();
+
+
+let ulTitle = document.querySelectorAll('ul');
+let ulTitleChildTwo = ulTitle[1].children;
+ulTitle[1].insertBefore(ulTitleChildTwo[6], ulTitleChildTwo[4]);
+ulTitle[1].insertBefore(ulTitleChildTwo[8], ulTitleChildTwo[5]);
+
+let ulTitleChildFive = ulTitle[4].children;
+ulTitle[4].insertBefore(ulTitleChildFive[9], ulTitleChildFive[2]);
+ulTitle[4].insertBefore(ulTitleChildFive[4], ulTitleChildFive[3]);
+ulTitle[4].insertBefore(ulTitleChildFive[5], ulTitleChildFive[4]);
+ulTitle[4].insertBefore(ulTitleChildFive[6], ulTitleChildFive[9]);
+
+
+ulTitle[5].innerHTML += '<li>Глава 8: За пределами ES6</li>';
+ulTitle[5].insertBefore(ulTitle[5].children[10], ulTitle[5].children[9]);
