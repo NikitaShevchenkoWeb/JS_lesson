@@ -22,6 +22,7 @@ let ulTitle = document.querySelectorAll('ul');
 let ulTitleChildTwo = ulTitle[1].children;
 ulTitle[1].insertBefore(ulTitleChildTwo[6], ulTitleChildTwo[4]);
 ulTitle[1].insertBefore(ulTitleChildTwo[8], ulTitleChildTwo[5]);
+ulTitle[1].insertBefore(ulTitleChildTwo[2], ulTitleChildTwo[10]);
 
 let ulTitleChildFive = ulTitle[4].children;
 ulTitle[4].insertBefore(ulTitleChildFive[9], ulTitleChildFive[2]);
