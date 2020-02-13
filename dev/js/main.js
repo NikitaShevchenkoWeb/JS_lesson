@@ -1,23 +1,48 @@
 "use strict";
 
-let money = 50000,
-    income = "Фриланс",
-    addExpenses = "Кофе, Интернет, Такси",
-    deposit = false,
-    mission = 300000,
-    period = 12;
+function DomElement(selector, width, height, bg, fontSize) {
+    this.selector = selector;
+    this.height = height;
+    this.width = width;
+    this.bg = bg;
+    this.fontSize = fontSize;
+}
 
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+DomElement.prototype.create = function () {
+    let newElem = document.createElement('div'),
+        body = document.querySelector('body'),
+        str = this.selector.charAt(0),
+        nameClassID = this.selector.substring(1);
 
-console.log(addExpenses.length);
+    if (str === '.') {
+        newElem.className = nameClassID;
+        newElem.innerHTML = "Hello!";
+        body.appendChild(newElem);
 
-console.log("Период равен " + period + " месяцев");
-console.log("Цель заработать " + mission + " рублей");
+    } else if (str === '#') {
+        newElem.id = nameClassID;
+        newElem.innerHTML = "Hello!";
+        body.appendChild(newElem);
+    }
+};
+
+DomElement.prototype.newStyle = function () {
+  let elem = document.querySelector('div');
+  if (elem) {
+      elem.style.cssText = 'width: ' + this.width + ';' + 'height: ' + this.height + ';' +
+          'background: ' + this.bg + ';' + 'font-size: ' + this.fontSize + ';'
+  }
+};
 
 
-console.log(addExpenses.toLowerCase());
+function newElem(selector, width, height, bg, fontSize) {
+    DomElement.apply(this, arguments);
+}
 
-let budgetDay = money / 30;
-console.log(budgetDay);
+newElem.prototype = Object.create(DomElement.prototype);
+
+
+let test = new newElem('.class', '100%', '50px', 'green', '30px');
+
+test.create();
+test.newStyle();
