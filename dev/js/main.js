@@ -1,37 +1,30 @@
 "use strict";
 
-let btnCalculate = document.getElementById('start');
+const btnCalculate = document.getElementById('start'),
+      incomePlus = document.getElementsByTagName('button')[0],
+      expensesPlus = document.getElementsByTagName('button')[1],
+      checkBox = document.querySelector('#deposit-check'),
+      additionalIncomeItem = document.querySelectorAll('.additional_income-item');
 
-let incomePlus = document.getElementsByTagName('button')[0];
-let expensesPlus = document.getElementsByTagName('button')[1];
+const budgetMonth = document.querySelectorAll('.result-total')[0],
+      budgetDay = document.querySelectorAll('.result-total')[1],
+      expensesMonth = document.querySelectorAll('.result-total')[2],
+      additionalIncome = document.querySelectorAll('.result-total')[3],
+      additionalExpenses = document.querySelectorAll('.result-total')[4],
+      incomePeriod = document.querySelectorAll('.result-total')[5],
+      targetMonth = document.querySelectorAll('.result-total')[6];
 
-let checkBox = document.querySelector('#deposit-check');
+const monthIncome = document.querySelector('.salary-amount'),
+      addIncomeTitle = document.querySelector('.income-title'),
+      addIncomeAmount = document.querySelector('.income-amount'),
+      addExpensesTitle = document.querySelector('.expenses-title'),
+      addExpensesAmount = document.querySelector('.expenses-amount'),
+      possibleExpenses = document.querySelector('.additional_expenses-item'),
+      target = document.querySelector('.target-amount'),
+      range = document.querySelector('.period-select');
 
-// let incomeItemOne = document.querySelectorAll('.additional_income-item')[0];
-// let incomeItemTwo = document.querySelectorAll('.additional_income-item')[1];
-let additionalIncomeItem = document.querySelectorAll('.additional_income-item');
-
-
-let budgetMonth = document.querySelectorAll('.result-total')[0],
-    budgetDay = document.querySelectorAll('.result-total')[1],
-    expensesMonth = document.querySelectorAll('.result-total')[2],
-    additionalIncome = document.querySelectorAll('.result-total')[3],
-    additionalExpenses = document.querySelectorAll('.result-total')[4],
-    incomePeriod = document.querySelectorAll('.result-total')[5],
-    targetMonth = document.querySelectorAll('.result-total')[6];
-
-
-let monthIncome = document.querySelector('.salary-amount'),
-    incomeItem = document.querySelectorAll('.income-items'),
-    addIncomeTitle = document.querySelector('.income-title'),
-    addIncomeAmount = document.querySelector('.income-amount'),
-    addExpensesTitle = document.querySelector('.expenses-title'),
-    addExpensesAmount = document.querySelector('.expenses-amount'),
-    expensesItems = document.querySelectorAll('.expenses-items'),
-
-    possibleExpenses = document.querySelector('.additional_expenses-item'),
-    target = document.querySelector('.target-amount'),
-    range = document.querySelector('.period-select');
+let incomeItem = document.querySelectorAll('.income-items'),
+    expensesItems = document.querySelectorAll('.expenses-items');
 
 
 let isNumber = function(n) {
@@ -59,16 +52,15 @@ class AppData {
 
     start() {
         function start() {
-            let _this = this;
             this.budget = +monthIncome.value;
 
-            _this.getExpenses();
-            _this.getExpensesMonth();
-            _this.getAddExpenses();
-            _this.getAddIncome();
-            _this.getIncome();
-            _this.getBudget();
-            _this.showResult();
+            this.getExpenses();
+            this.getExpensesMonth();
+            this.getAddExpenses();
+            this.getAddIncome();
+            this.getIncome();
+            this.getBudget();
+            this.showResult();
         }
         start.call(appData);
     }
@@ -105,7 +97,7 @@ class AppData {
 
 
     getExpenses() {
-        let _this = this;
+        const _this = this;
         expensesItems.forEach(function (item) {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
@@ -117,7 +109,7 @@ class AppData {
 
 
     getIncome() {
-        let _this = this;
+        const _this = this;
         incomeItem.forEach(function (item) {
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
@@ -133,7 +125,7 @@ class AppData {
 
 
     getAddExpenses() {
-        let _this = this;
+        const _this = this;
         let addExpenses = possibleExpenses.value.split(',');
         addExpenses.forEach(function (item) {
             item = item.trim();
@@ -145,7 +137,7 @@ class AppData {
 
 
     getAddIncome() {
-        let _this = this;
+        const _this = this;
         additionalIncomeItem.forEach(function (item) {
             let itemValue = item.value.trim();
             if (itemValue !== '') {
@@ -156,7 +148,7 @@ class AppData {
 
 
     showResult() {
-        let _this = this;
+        const _this = this;
 
         budgetMonth.value = this.budgetMonth;
         budgetDay.value = Math.ceil(this.budgetDay);
@@ -270,7 +262,7 @@ class AppData {
 
 
 
-        let btnReset = document.querySelector('#cancel');
+        const btnReset = document.querySelector('#cancel');
         btnCalculate.addEventListener('click', function () {
             let disabledInput = document.querySelectorAll('.data input[type=text]');
             disabledInput.forEach(function (item) {
