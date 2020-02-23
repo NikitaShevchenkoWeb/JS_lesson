@@ -57,14 +57,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
         document.addEventListener('click', (e) => {
            let target = e.target;
-           // console.log(target);
 
            if (target.closest('.menu') || target.matches('menu ul>li a') || target.matches('menu a')) {
                handlerMenu();
-           }
-
-           if (!target.closest('.menu')) {
-               menu.classList.remove('active-menu');
            }
         });
     }
