@@ -1,0 +1,13 @@
+#form2 .validator-error {
+    position: absolute;
+    top: 30px !important;
+    right: 20px !important;
+    font-size: 14px;
+    color: red;
+}
+
+#form2  .mess + .validator-error {
+    top: auto !important;
+    bottom: 20px !important;
+    right: 20px !important;
+}
