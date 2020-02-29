@@ -351,9 +351,17 @@ window.addEventListener('DOMContentLoaded', function () {
                 animateIDs = 0;
 
             const animateCalcTotal = (operation) => {
-                if (operation) {totalValContent +=200;}
-                else {totalValContent -=200;}
+                if (operation) {
+                    totalValContent +=200;
+                    if (totalValContent <= total) {stop()}
+                }
+                else {
+                    totalValContent -=200;
+                    if (totalValContent >= total) {stop()}
+                }
+            };
 
+            const stop = () => {
                 totalValue.textContent = totalValContent;
                 if (totalValContent === total) {clearInterval(animateIDs)}
             };
