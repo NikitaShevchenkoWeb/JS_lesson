@@ -1,31 +1,31 @@
 'use strict';
 
-import countTimer from './modules/countTimer';
-import toggleMenu from './modules/toggleMenu';
-import togglePopup from './modules/togglePopup';
+import countTimers from './modules/countTimer';
+import menu from './modules/toggleMenu';
+import popup from './modules/togglePopup';
 import tabs from './modules/tabs';
-import slider from './modules/slider';
-import calc from './modules/calc';
+import sliders from './modules/slider';
+import calcPrice from './modules/calc';
 import sendForms from './modules/sendForm';
 
 
 //Timer
-countTimer('15 March 2020');
+countTimers();
 
 //Menu
-toggleMenu();
+menu();
 
 //popup
-togglePopup();
+popup();
 
 //tabs
 tabs();
 
 //slider
-slider();
+sliders();
 
 //calc
-calc(100);
+calcPrice();
 
 //send form
 sendForms();

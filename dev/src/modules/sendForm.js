@@ -1,3 +1,5 @@
+'use strict';
+
 //send AJAX form
 const sendForms = () => {
     const sendForm = (form) => {
@@ -28,6 +30,10 @@ const sendForms = () => {
                     console.log(error);
                     clearForm();
                 });
+
+            setTimeout(() => {
+                statusMessage.remove();
+            }, 5000)
         });
 
         const postData = (body) => {
