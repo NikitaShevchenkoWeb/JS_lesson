@@ -36,7 +36,14 @@ const calcPrice = () => {
             totalValue = document.getElementById('total');
 
 
+        const floor = (item) => {
+            return Math.floor(item);
+        };
+
+        let anim = 0;
+
         const countSum = () => {
+            //total animate
             let total = 0,
                 countValue = 1,
                 dayValue = 1;
@@ -55,73 +62,34 @@ const calcPrice = () => {
             }
 
             if (typeValue && squareValue) {
-                total = price * typeValue * squareValue * countValue * dayValue;
+                total = floor(price * typeValue * squareValue * countValue * dayValue);
             }
 
-            if (calcSquare.value === '') {return}
 
+            let animateID = 0;
+            const stop = () => {
+                let val = floor(total - animateID);
 
-            //total animate
-            let totalValueS = document.getElementById('total'),
-                totalValContent = +totalValueS.textContent,
-                animateIDs = 0;
-
-            let block = true;
-            const animateCalcTotal = (operation) => {
-
-                if (block) {
-                    calcType.setAttribute('disabled', 'disabled');
-
-                    calcSquare.setAttribute('readonly', 'readonly');
-                    calcDay.setAttribute('readonly', 'readonly');
-                    calcCount.setAttribute('readonly', 'readonly');
+                if (val > 10000) {
+                    animateID = animateID + 10000;
+                } else if (val > 1000) {
+                    animateID = animateID + 1000;
+                } else if (val > 100) {
+                    animateID = animateID + 100;
+                } else if (val > 10) {
+                    animateID = animateID + 10;
+                } else if (val >= 0) {
+                    animateID = animateID + 1;
                 }
 
+                totalValue.textContent = animateID;
 
-                if (operation) {
-                    totalValContent +=200;
-                    if (totalValContent <= total) {stop()}
-                    else if (total === (total % totalValContent)) {
-                        let remains = total % totalValContent;
-                        stop(remains);
-                    }
-                }
-                else {
-                    totalValContent -=200;
-                    if (totalValContent >= total) {stop()}
-                    else if (total === (total % totalValContent)) {
-                        let remains = total % totalValContent;
-                        stop(remains);
-                    }
-                }
+                if (animateID !== floor(total)) { anim = requestAnimationFrame(stop); }
             };
 
 
-            const stop = (remains = 0) => {
-                if (remains === 0) {
-                    totalValue.textContent = totalValContent;
-                } else {
-                    totalValContent = remains;
-                    totalValue.textContent = Math.floor(remains);
-                }
-
-                if (Math.floor(totalValContent) === Math.floor(total)) {
-                    clearInterval(animateIDs);
-
-                    calcType.removeAttribute('disabled');
-                    calcSquare.removeAttribute('readonly');
-                    calcDay.removeAttribute('readonly');
-                    calcCount.removeAttribute('readonly');
-
-                }
-            };
-
-
-            if (totalValContent < total) {
-                animateIDs = setInterval(animateCalcTotal, 10, true);
-            } else if (totalValContent > total) {
-                animateIDs = setInterval(animateCalcTotal, 10, false);
-            }
+            let square = +calcSquare.value;
+            if ((square != 0 || calcSquare.value != '') && total != 0){ stop(); }
         };
 
 
@@ -129,6 +97,7 @@ const calcPrice = () => {
             const target = e.target;
 
             if (target.matches('select') || target.matches('input')) {
+                cancelAnimationFrame(anim);
                 countSum();
             }
         });
